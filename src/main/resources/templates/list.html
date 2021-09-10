@@ -1,0 +1,65 @@
+<!--
+  ユーザ一覧ページ（管理者権限専用）
+-->
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+
+<head>
+  <meta charset="utf-8" th:remove="tag">
+</head>
+
+<body>
+  <!-- サイドバーを表示 -->
+  <div layout:fragment="sidebar" th:replace="~{fragments/sidebar :: sidebar}">
+  </div>
+
+  <!-- コンテンツを表示 -->
+  <main layout:fragment="content" class="offcanvas-outside bg-light">
+    <div class="container-fluid">
+
+      <!-- トグルボタン -->
+      <div th:replace="~{fragments/sidebar :: toggler}">
+      </div>
+
+      <div class="row">
+        <div class="col">
+
+          <!-- カード -->
+          <div class="card shadow">
+            <div class="card-header">
+              <h6 class="common__text-color--navy my-2">
+                ユーザ一覧
+              </h6>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table table-bordered" id="user-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>ユーザ名</th>
+                    <th>Email</th>
+                    <th>性別</th>
+                    <th>権限</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="user : ${users}" th:object="${user}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{username}"></td>
+                    <td th:text="*{email}"></td>
+                    <td th:text="${T(com.example.springsecurity2.util.Type).GENDERS.get(user.gender)}"></td>
+                    <td th:text="*{role}"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

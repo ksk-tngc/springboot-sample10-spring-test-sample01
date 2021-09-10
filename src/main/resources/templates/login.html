@@ -1,0 +1,65 @@
+<!--
+  ログインページ
+-->
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+
+<head>
+  <meta charset="utf-8" th:remove="tag">
+</head>
+
+<body>
+  <!-- コンテンツを表示 -->
+  <main layout:fragment="content" class="common__bg-img vh-100">
+    <!-- コンテナ -->
+    <div class="container login-container">
+      <!-- コンテンツを上下左右中央に配置する -->
+      <div class="row justify-content-center">
+
+        <!-- カード -->
+        <div class="card shadow py-3 login-card">
+          <div class="card-body">
+            <!-- カード：タイトル -->
+            <h3 class="card-title mb-3 text-center common__text-color--navy">
+              ユーザ管理システム
+            </h3>
+
+            <!-- ログイン画面に表示するメッセージ -->
+            <div th:replace="~{fragments/message :: login}"></div>
+
+            <!-- ログインフォーム -->
+            <form th:action="@{/login}" method="post">
+              <!-- ユーザ名 -->
+              <div class="mb-3">
+                <input type="text" name="username" placeholder="ユーザ名" class="form-control">
+              </div>
+              <!-- パスワード -->
+              <div class="mb-3">
+                <input type="password" name="password" placeholder="パスワード" class="form-control">
+              </div>
+              <!-- Remember-Me -->
+              <div class="mb-3 form-check">
+                <input type="checkbox" name="remember-me" id="remember-me" class="form-check-input">
+                <label for="remember-me" class="form-check-label">ログインしたままにする</label>
+              </div>
+              <!-- ログインボタン -->
+              <button type="submit" class="w-100 btn common__btn--navy mb-2">ログイン</button>
+            </form>
+
+            <hr>
+            <!-- 新規登録リンク -->
+            <div class="text-center">
+              <a th:href="@{/register}" class="common__text-color--navy">
+                新規登録はこちら
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

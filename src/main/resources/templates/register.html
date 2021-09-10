@@ -1,0 +1,93 @@
+<!--
+  ユーザ登録ページ
+-->
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout}">
+
+<head>
+  <meta charset="utf-8" th:remove="tag">
+</head>
+
+<body>
+  <!-- コンテンツを表示 -->
+  <main layout:fragment="content" class="common__bg-img vh-100">
+    <div class="container pt-5">
+      <div class="row justify-content-center">
+
+        <!-- カード -->
+        <div class="card shadow " style="max-width: 480px;">
+          <div class="card-body">
+            <h3 class="card-title mb-3 text-center common__text-color--navy">
+              ユーザ登録
+            </h3>
+
+            <form th:action="@{/register}" method="post" th:object="${user}" novalidate>
+              <!-- ユーザ名 -->
+              <div class="mb-3">
+                <label for="username" class="form-label">
+                  <span class="badge bg-danger">必須</span>
+                  ユーザ名
+                </label>
+                <input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{username}">
+                <div class="invalid-feedback" th:errors="*{username}"></div>
+              </div>
+
+              <!-- パスワード -->
+              <div class="mb-3">
+                <label for="password" class="form-label">
+                  <span class="badge bg-danger">必須</span>
+                  パスワード
+                </label>
+                <input type="password" class="form-control" th:errorclass="is-invalid" th:field="*{password}">
+                <div class="invalid-feedback" th:errors="*{password}"></div>
+              </div>
+
+              <!-- メールアドレス -->
+              <div class="mb-3">
+                <label for="email" class="form-label">
+                  <span class="badge bg-danger">必須</span>
+                  メールアドレス
+                </label>
+                <input type="email" class="form-control" th:errorclass="is-invalid" th:field="*{email}">
+                <div class="invalid-feedback" th:errors="*{email}"></div>
+              </div>
+
+              <!-- 性別 -->
+              <div class="mb-3">
+                性別
+                <div class="ms-2 form-check" th:each="gender : ${T(com.example.springsecurity2.util.Type).GENDERS}">
+                  <input type="radio" class="form-check-input" th:field="*{gender}" th:value="${gender.key}">
+                  <label th:for="${#ids.prev('gender')}" class="form-check-label" th:text="${gender.value}"></label>
+                </div>
+              </div>
+
+              <!-- 管理者権限 -->
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" th:field="*{admin}">
+                <label th:for="${#ids.prev('admin')}">
+                  管理者(Admin)として登録する
+                </label>
+              </div>
+
+              <!-- 登録ボタン -->
+              <button type="submit" class="w-100 btn common__btn--navy">
+                登録
+              </button>
+
+            </form>
+
+            <hr class="mt-4">
+            <!-- キャンセル -->
+            <div class="text-center">
+              <a th:href="@{/}">キャンセル</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

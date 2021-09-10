@@ -1,0 +1,40 @@
+<!--
+  共通レイアウト
+-->
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- css -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}">
+  <link rel="stylesheet" th:href="@{/webjars/datatables/css/dataTables.bootstrap5.min.css}">
+  <link rel="stylesheet" th:href="@{/webjars/datatables-buttons/css/buttons.dataTables.min.css}">
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+
+  <title>ユーザ管理システム</title>
+</head>
+
+<body>
+  <!-- サイドバーの配置 -->
+  <div layout:fragment="sidebar"></div>
+
+  <!-- コンテンツの配置 -->
+  <div layout:fragment="content"></div>
+
+  <!-- js -->
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}"></script>
+  <script th:src="@{/webjars/datatables/js/dataTables.bootstrap5.min.js}"></script>
+  <script th:src="@{/webjars/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+  <script th:src="@{/webjars/datatables-buttons/js/buttons.html5.min.js}"></script>
+  <script th:src="@{/webjars/datatables-buttons/js/buttons.print.min.js}"></script>
+  <script th:src="@{/webjars/jszip/jszip.min.js}"></script>
+  <script th:src="@{/js/usertables.js}"></script>
+</body>
+
+</html>
