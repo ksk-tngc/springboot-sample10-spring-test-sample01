@@ -1,6 +1,6 @@
 ## 概要
 
-Spring Test のサンプルプロジェクトです。  
+Spring Test のサンプルです。  
 
 JUnit 5 と MockMvc で Spring Boot アプリケーショ（Spring MVC や Spring Security）をテストします。
 
